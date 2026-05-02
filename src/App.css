@@ -12,19 +12,50 @@
   color: #f1f5f9;
   padding: 1rem 1.5rem;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.app-header h1 {
+.app-header__text h1 {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0;
 }
 
-.app-header p {
+.app-header__text p {
   font-size: 0.75rem;
   color: #94a3b8;
   margin: 0.2rem 0 0;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.github-link:hover {
+  color: #f1f5f9;
+  border-color: #64748b;
+}
+
+.github-link svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .tab-nav {
@@ -140,6 +171,98 @@
   font-size: 0.65rem;
   color: #94a3b8;
   font-weight: 500;
+}
+
+/* ── InfoTip tooltip ──────────────────────────────── */
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-tip__btn {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: none;
+  cursor: pointer;
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: inherit;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.info-tip__btn:hover,
+.info-tip__btn:focus-visible {
+  background: #cbd5e1;
+  color: #0f172a;
+  outline: none;
+}
+
+.info-tip__content {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 0.7rem;
+  line-height: 1.55;
+  padding: 8px 11px;
+  border-radius: 7px;
+  width: 230px;
+  white-space: normal;
+  z-index: 200;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Arrow */
+.info-tip__content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1e293b;
+}
+
+.info-tip:hover .info-tip__content,
+.info-tip:focus-within .info-tip__content {
+  display: block;
+}
+
+/* Keep tooltip on screen at left edge — expands rightward */
+.info-tip--align-left .info-tip__content {
+  left: 0;
+  transform: none;
+}
+
+.info-tip--align-left .info-tip__content::after {
+  left: 10px;
+  transform: none;
+}
+
+/* Keep tooltip on screen at right edge — expands leftward */
+.info-tip--align-right .info-tip__content {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.info-tip--align-right .info-tip__content::after {
+  left: auto;
+  right: 10px;
+  transform: none;
 }
 
 .list-area {
